@@ -53,8 +53,6 @@
 	; Tool Boad drivers go here
 	M569 P121.0 D2 S0                                ; Drive 121 | Extruder T0
 
-
-
 ; Kinematics -----------------------------------------------------------------------------------------------------------------------------------------------------
 	M669 K1                                         ; CoreXY mode
 
@@ -63,29 +61,23 @@
 
 	M671 X297.5:150:2.5 Y313.5:-16.5:313.5 S10	;Front Left: (297.5, 313.5) | Back: (150, -16.5) | Front Right: (2.5, 313.5)
 
-
-
 ; Axis and motor configuration -----------------------------------------------------------------------------------------------------------------------------------
 	M350 X16 Y16 I1                                 ; Set 16x microstepping for CoreXY axes. Use interpolation.
 	M350 U4 I1                                      ; Set 4x for toolchanger lock. Use interpolation.
 	M350 Z16 I1                                     ; Set 16x microstepping for Z axes. Use interpolation.
 	M350 E16 I1                                     ; Set 16x microstepping for Extruder axes. Use interpolation.
-	M350 B16 I1                                     ; Set 16x microstepping for Brush Arm. Use interpolation
 
 	M906 X1900 Y1900 Z1700 E1330 I30                ; Motor currents (mA) and Idle percentage
 	M906 U1100 I60                                  ; Motor currents (mA) and Idle percentage
-	M906 B650 I60                                   ; Motor currents (mA) and Idle percentage
 	
-	M201 X750 Y750 Z100 E1300 U1000 B50             ; Accelerations (mm/s^2)
-	M203 X13000 Y13000 Z1000 E8000 U10000 B5000     ; Maximum speeds (mm/min)
-	M566 X480 Y480 Z800 E3000 U200 B150             ; Maximum jerk speeds mm/minute
+	M201 X750 Y750 Z100 E1300 U1000                 ; Accelerations (mm/s^2)
+	M203 X13000 Y13000 Z1000 E8000 U10000           ; Maximum speeds (mm/min)
+	M566 X480 Y480 Z800 E3000 U200                  ; Maximum jerk speeds mm/minute
 
 	M92 X200 Y200                                   ; Steps/mm for X,Y GT2 2mm pitch 16 tooth pulleys, 16x microstepping, 0.9 deg stepper   (preferred). 
 	M92 Z3200                                       ; Steps/mm for Z - T8*2, 16x microstepping, 0.9 deg stepper
 	M92 U11.429                                     ; Steps/mm for tool lock geared motor. 
 	M92 E400                                        ; Extruder - 0.9 deg/step
-	M92 B83                                         ; Swing-Out Brush
-
 
 
 ; Endstops, Probes, and Axis Limits --------------------------------------------------------------------------------------------------------------------------------------------
@@ -128,7 +120,7 @@
 
 ; Call Scripts and restore from non-volitile memory --------------------------------------------------------------------------------------------------------------------------------
 
-	;M98  P"/sys/Toffsets.g"           ; Set tool offsets from the bed. In separate file so test macro can invoke. 
+	M98  P"/sys/Toffsets.g"           ; Set tool offsets from the bed. In separate file so test macro can invoke. 
 
 	;M98 P"config-user.g"             ; Load custom user config if one exists.
 
