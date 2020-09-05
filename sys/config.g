@@ -102,7 +102,7 @@
 
 	; Set axis software limits and min/max positions and triggers
 	
-	M208 X-11.5:311.5 Y-44:341 Z-0.2:315            ; Adjusted such that (0,0) lies at the lower left corner of a 300x300mm square in the 305mmx305mm build plate
+	M208 X-13.5:311.5 Y-39:341 Z-0.2:305            ; Adjusted such that (0,0) lies at the lower left corner of a 300x300mm square in the 305mmx305mm build plate
 	M208 U0:200                                     ; Set Elastic Lock (U axis) max rotation angle
 
 	;M581 P10 T1 S0 C1                              ; Set to trigger a pause when toolplate is not locked up while printing
