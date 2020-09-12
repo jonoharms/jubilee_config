@@ -40,7 +40,7 @@
 	M569 P0 S1                                      ; Drive 0 | X stepper	
 	M569 P1 S1                                      ; Drive 2 | Y Stepper
 
-	M569 P5 S1                                      ; Drive 1 | U Tool Changer Lock	
+	M569 P5 S0                                      ; Drive 1 | U Tool Changer Lock	
 
 	M569 P2 S0                                      ; Drive 3 | Front Left Z
 	M569 P3 S0                                      ; Drive 4 | Back Z
@@ -110,7 +110,7 @@
 
 ; Peripherals ---------------------------------------------------------------------------------------------------------------------------------------
 
-	;M98 P"/sys/bed_heater.g"
+	M98 P"/sys/bed_heater.g"
 	;M98 P"/sys/pid_tuning_station.g"    
 	M98 P"/sys/tool_0.g"
 	;M98 P"/sys/tool_1.g"
