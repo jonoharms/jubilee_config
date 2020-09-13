@@ -1,7 +1,7 @@
 	; tpost0.g
 	; called after firmware thinks Tool0 is selected
 	; Note: tool offsets are applied at this point!
-
+    G53 G0 Z50
     G53 G0 X150 Y150 F12000  ; Rapid to the approach position without any current tool.
 	G4 S5					; wait for manual tool change
 	M98 P"/macros/tool_lock.g" ; Lock the tool

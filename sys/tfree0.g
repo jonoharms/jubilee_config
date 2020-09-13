@@ -5,7 +5,7 @@
 
 	M208 X-11.5:311.5 Y-44:341		; Reclaim full travel region
 	G91								; Set Relative Movements
-	G1 Z1							; Pop the Z up slightly
+	G1 Z50							; Pop the Z up slightly
 	G90								; Restore Absolute Movements
 	G53 G0 X150 F12000				; Rapid to the approach position with tool-0. (park_x, park_y - offset)
 	G53 G0 Y150 F12000				; Rapid to the approach position with tool-0. (park_x, park_y - offset)
