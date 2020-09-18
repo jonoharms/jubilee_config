@@ -16,6 +16,6 @@ G1 R0 X0                     ; Restore X position now accounting for new tool of
 M106 R2                      ; restore print cooling fan speed
 
 
-;x=216.8
+;x=233.4
 ;y=319.0
 ;y_min=275

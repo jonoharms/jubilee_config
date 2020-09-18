@@ -11,8 +11,8 @@
 	;;;M552 P192.168.1.2 S1						; Use Ethernet with a static IP
 	;;;M553 P255.255.255.0						; Netmask
 	;;;M554 192.168.1.3							; Gateway
-	M586 P1 S1									; Enable FTP
-	M586 P2 S1									; Enable Telnet
+	;M586 P1 S1									; Enable FTP
+	;M586 P2 S1									; Enable Telnet
 
 	; Debugging
 	M111 S0										; Debug

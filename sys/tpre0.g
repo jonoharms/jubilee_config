@@ -4,9 +4,9 @@
 
 G90                  ; Ensure the machine is in absolute mode before issuing movements.
                      ; CHANGE X VALUE ON NEXT LINE TO MATCH YOUR PARK LOCATION.
-G0 X216.8 Y275 F20000  ; Rapid to the approach position without any current tool.
+G0 X233.4 Y275 F20000  ; Rapid to the approach position without any current tool.
 G60 S0               ; Save this position as the reference point from which to later apply new tool offsets.
 
-;x=216.8
+;x=233.4
 ;y=319.0
 ;y_min=275
