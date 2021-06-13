@@ -3,3 +3,4 @@
 	G30 P2 X15 Y285 Z-99999 S3	; probe near front left leadscrew and calibrate 3 motors
 	;G28 Z
 	;G1 X0 Y0 F10000
+    G29 S1
