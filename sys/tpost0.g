@@ -5,7 +5,7 @@
 
 M116 P0                      ; Wait for set temperatures to be reached
 G90                          ; Ensure the machine is in absolute mode before issuing movements.
-G53 G1 Y319.0 F6000          ; Move to the pickup position for tool-0.
+G53 G1 Y310.0 F6000          ; Move to the pickup position for tool-0.
 M98 P"/macros/tool_lock.g"   ; Lock the tool
 G1 R2 Z0                     ; Restore prior Z position before tool change was initiated.
                              ; Note: tool tip position is automatically saved to slot 2 upon the start of a tool change.
@@ -17,5 +17,5 @@ M106 R2                      ; restore print cooling fan speed
 
 
 ;x=233.4
-;y=319.0
+;y=310.0
 ;y_min=275

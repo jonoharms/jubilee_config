@@ -8,11 +8,11 @@ G90                          ; Absolute Mode.
 G53 G0 X233.4 Y275 F12000      ; Rapid to the back of the post. Stay away from the tool rack so we don't collide with tools.
                              ; This position must be chosen such that the most protruding y face of the current tool
                              ; (while on the carriage) does not collide with the most protruding y face of any parked tool.
-G53 G1 Y319.0 F6000            ; Controlled move to the park position with tool-0. (park_x, park_y)
+G53 G1 Y310.0 F6000            ; Controlled move to the park position with tool-0. (park_x, park_y)
 M98 P"/macros/tool_unlock.g" ; Unlock the tool
 G53 G1 Y275 F6000            ; Retract the pin.
 
 
 ;x=233.4
-;y=319.0
+;y=310.0
 ;y_min=275
