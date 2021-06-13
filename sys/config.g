@@ -15,9 +15,9 @@
 	;M586 P2 S1									; Enable Telnet
 
 	; Debugging
-    ;M122 P500 S0
-	M111 S0										; Debug
-	M929 P"eventlog.txt" S1						; Start logging to file eventlog.txt
+    ; M122 P500 S0
+	; M111 S0										; Debug
+	; M929 P"eventlog.txt" S1						; Start logging to file eventlog.txt
 
 	; General Preferences
 	;M550 P"Jubilee"							; Sets printer name to Jubilee
@@ -36,7 +36,7 @@
 	
 	
 	; Duet3 Tool Boards | CAN Bus Addresses begin at 121
-	M584 E20.0                                     ; Define all Extruders on this line 
+	M584 E20.0:21.0                                     ; Define all Extruders on this line 
 
 	M569 P0 S1                                      ; Drive 0 | X stepper	
 	M569 P1 S1                                      ; Drive 2 | Y Stepper
@@ -52,7 +52,8 @@
 	; Duet3 3HC Expansion Board CAN Bus Address 1
 
 	; Tool Boad drivers go here
-	M569 P20.0 D2 S0                                ; Drive 20 | Extruder T0
+	M569 P20.0 D3 S0                                ; Drive 20 | Extruder T0
+	M569 P21.0 D3 S0                                ; Drive 21 | Extruder T1
 
 ; Kinematics -----------------------------------------------------------------------------------------------------------------------------------------------------
 	M669 K1                                         ; CoreXY mode
@@ -66,19 +67,19 @@
 	M350 X16 Y16 I1                                 ; Set 16x microstepping for CoreXY axes. Use interpolation.
 	M350 U4 I1                                      ; Set 4x for toolchanger lock. Use interpolation.
 	M350 Z16 I1                                     ; Set 16x microstepping for Z axes. Use interpolation.
-	M350 E16 I1                                     ; Set 16x microstepping for Extruder axes. Use interpolation.
+	M350 E16:16 I1                                     ; Set 16x microstepping for Extruder axes. Use interpolation.
 
-	M906 X1900 Y1900 Z1700 E1000 I30                ; Motor currents (mA) and Idle percentage
+	M906 X1900 Y1900 Z1700 E1000:1000 I30                ; Motor currents (mA) and Idle percentage
 	M906 U1100 I60                                  ; Motor currents (mA) and Idle percentage
 	
-	M201 X750 Y750 Z100 E1300 U1000                 ; Accelerations (mm/s^2)
-	M203 X13000 Y13000 Z1000 E8000 U10000           ; Maximum speeds (mm/min)
-	M566 X400 Y400 Z8 E200 U200                     ; Maximum jerk speeds mm/minute
+	M201 X750 Y750 Z100 E1300:1300 U1000                 ; Accelerations (mm/s^2)
+	M203 X13000 Y13000 Z1000 E8000:8000 U10000           ; Maximum speeds (mm/min)
+	M566 X400 Y400 Z8 E200:200 U200                     ; Maximum jerk speeds mm/minute
 
 	M92 X200 Y200                                   ; Steps/mm for X,Y GT2 2mm pitch 16 tooth pulleys, 16x microstepping, 0.9 deg stepper   (preferred). 
 	M92 Z3200                                       ; Steps/mm for Z - T8*2, 16x microstepping, 0.9 deg stepper
 	M92 U11.429                                     ; Steps/mm for tool lock geared motor. 
-	M92 E409                                        ; Extruder - 0.9 deg/step
+	M92 E409:409                                        ; Extruder - 0.9 deg/step
 
 
 ; Endstops, Probes, and Axis Limits --------------------------------------------------------------------------------------------------------------------------------------------
@@ -114,7 +115,7 @@
 	M98 P"/sys/bed_heater.g"
 	;M98 P"/sys/pid_tuning_station.g"    
 	M98 P"/sys/tool_0.g"
-	;M98 P"/sys/tool_1.g"
+	M98 P"/sys/tool_1.g"
 	;M98 P"/sys/tool_2.g"
 	;M98 P"/sys/tool_3.g"
 
