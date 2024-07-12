@@ -50,7 +50,7 @@
 	; End of main board drivers.  Expansion boards have three each.
 
 	; Duet3 3HC Expansion Board CAN Bus Address 1
-
+	G4 S5;
 	; Tool Boad drivers go here
 	M569 P20.0 D3 S0                                ; Drive 20 | Extruder T0
 	M569 P21.0 D3 S0                                ; Drive 21 | Extruder T1
@@ -69,18 +69,23 @@
 	M350 Z16 I1                                     ; Set 16x microstepping for Z axes. Use interpolation.
 	M350 E16:16 I1                                     ; Set 16x microstepping for Extruder axes. Use interpolation.
 
-	M906 X1900 Y1900 Z1700 E1000:1000 I30                ; Motor currents (mA) and Idle percentage
+	M906 X2000 Y2000 Z1700 E1000:1000 I30                ; Motor currents (mA) and Idle percentage
 	M906 U1100 I60                                  ; Motor currents (mA) and Idle percentage
-	
-	M201 X750 Y750 Z100 E1300:1300 U1000                 ; Accelerations (mm/s^2)
-	M203 X13000 Y13000 Z1000 E8000:8000 U10000           ; Maximum speeds (mm/min)
-	M566 X400 Y400 Z8 E200:200 U200                     ; Maximum jerk speeds mm/minute
 
 	M92 X200 Y200                                   ; Steps/mm for X,Y GT2 2mm pitch 16 tooth pulleys, 16x microstepping, 0.9 deg stepper   (preferred). 
 	M92 Z3200                                       ; Steps/mm for Z - T8*2, 16x microstepping, 0.9 deg stepper
 	M92 U11.429                                     ; Steps/mm for tool lock geared motor. 
 	M92 E409:409                                        ; Extruder - 0.9 deg/step
 
+; Speed and acceleration
+;-------------------------------------------------------------------------------
+	M201 X2000 Y2000                       ; Accelerations (mm/s^2)
+	M201 Z100                               ; LDO ZZZ Acceleration
+	M201 E1300:1300 						; Hemeras
+	M201 U1000                 				; Accelerations (mm/s^2)
+	M203 X18000 Y18000 Z800 E8000:8000 U9000           ; Maximum speeds (mm/min)
+	M566 X600 Y600 Z500 E200:200 U50                     ; Maximum jerk speeds mm/minute
+	M593 P"zvd" F43 ; use EI3 input shaping to cancel ringing at 38Hz
 
 ; Endstops, Probes, and Axis Limits --------------------------------------------------------------------------------------------------------------------------------------------
 	M574 X1 S1 P"^io0.in"                           ; Set homing switch configuration X1 = low-end, S1 = active-high (NC)
@@ -105,7 +110,7 @@
 	; Set axis software limits and min/max positions and triggers
 	
 	M208 X-13.5:311.5 Y-39:341 Z-0.2:305            ; Adjusted such that (0,0) lies at the lower left corner of a 300x300mm square in the 305mmx305mm build plate
-	M208 U0:200                                     ; Set Elastic Lock (U axis) max rotation angle
+	M208 U0:250                                     ; Set Elastic Lock (U axis) max rotation angle
 
 	;M581 P10 T1 S0 C1                              ; Set to trigger a pause when toolplate is not locked up while printing
 
@@ -119,8 +124,8 @@
 	;M98 P"/sys/tool_2.g"
 	;M98 P"/sys/tool_3.g"
 
-    M150 X0
-	M150 R255 U255 B255 P255 S40
+;    M150 X0
+;	M150 R255 U255 B255 P255 S40
 
 ; Call Scripts and restore from non-volitile memory --------------------------------------------------------------------------------------------------------------------------------
 
